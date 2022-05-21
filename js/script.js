@@ -51,7 +51,7 @@ function paginate(e) {
         lastPage= firstPage+10;
     }
     hideAllContacts();
-    for (let i=firstPage;i<firstPage+10;i++) {
+    for (let i=firstPage;i<lastPage;i++) {
         contacts[i].style.display = "block";
     }
 
