@@ -1,8 +1,9 @@
 let currentPage = 1;
+let numOfContactsonOnePage = 10;
 let contacts = Array.from(document.getElementsByClassName('contact-item cf'));
 let numOfContacts = contacts.length;
 
-let numOfPages = Math.ceil(numOfContacts/10);
+let numOfPages = Math.ceil(numOfContacts/numOfContactsonOnePage);
 
 let pagination = document.getElementById('pagination');
 
@@ -36,19 +37,19 @@ function hideAllContacts(index=0) {
         contacts[i].style.display = "none";
     }
 }
-hideAllContacts(11);   
+hideAllContacts(numOfContactsonOnePage);   
 
 function paginate(e) {
     let pageNum = e.target.innerHTML;
 
     // Displaying elements based on page number
-    let firstPage = 10*(+pageNum-1);
+    let firstPage = numOfContactsonOnePage*(+pageNum-1);
     let lastPage;
     // adjusting for Last Page
-    if (numOfContacts < firstPage+10) {
+    if (numOfContacts < firstPage+numOfContactsonOnePage) {
         lastPage=numOfContacts;
     } else {
-        lastPage= firstPage+10;
+        lastPage= firstPage+numOfContactsonOnePage;
     }
     hideAllContacts();
     for (let i=firstPage;i<lastPage;i++) {
